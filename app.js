@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // ============================================
     function closeGalleryInternal() {
         modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = '';
         setTimeout(() => { modalPhotoGrid.innerHTML = ''; }, 500);
     }
 

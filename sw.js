@@ -1,4 +1,4 @@
-const CACHE_NAME = 'raduuz-effa-v4';
+const CACHE_NAME = 'raduuz-effa-v6';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
