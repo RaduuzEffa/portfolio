@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raduuz Effa</title>
+
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#050505">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css?v=4">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body>
+
+    <div class="grain-overlay"></div>
+
+    <!-- Ambientní rohy -->
+    <div class="ambient-glow-top"></div>
+    <div class="ambient-glow-bottom"></div>
+
+    <!-- Top Brand Hlavička -->
+    <header class="w-full pt-12 pb-6 relative z-30 flex flex-col items-center justify-center">
+        <h2 class="text-xs md:text-sm tracking-[8px] md:tracking-[10px] font-outfit text-white uppercase opacity-90 mb-3">RADUUZ EFFA</h2>
+        <div class="w-16 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent mb-4"></div>
+        <div id="hero-brand-subtitle" class="text-[0.6rem] md:text-xs tracking-[6px] text-white/40 uppercase font-light">Digitální alchymista 21. století</div>
+    </header>
+
+    <!-- Hlavní Titulek Stránky -->
+    <section class="relative z-20 min-h-[45vh] flex flex-col items-center justify-center px-4 mt-8 mb-24">
+        <div class="ambient-glow-center"></div>
+        <h1 id="hero-photo-title" class="font-cinzel tracking-[0.2em] md:tracking-[0.3em] uppercase mb-8 font-light text-5xl md:text-7xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/20 drop-shadow-2xl relative z-10 text-center leading-tight">
+            AI FOTOGRAFIE
+        </h1>
+        <p id="hero-photo-subtitle" class="text-white/40 font-outfit text-xs md:text-sm uppercase tracking-[8px] md:tracking-[12px] relative z-10 text-center font-light">
+            Intimní umění optikou umělé inteligence
+        </p>
+    </section>
+
+    <!-- SEKCE 1: Fotogalerie (Alba) -->
+    <section id="galleries-section" class="galleries-section">
+        <div class="max-w-7xl mx-auto relative z-10 px-4 md:px-0">
+
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Vygenerované Galerie -->
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- MODÁLNÍ OKNO PRO KONKRÉTNÍ GALERII -->
+    <div id="modal" class="custom-scrollbar">
+        <div class="modal-header">
+            <button id="modal-back-btn"
+                class="hidden text-white/50 hover:text-white transition group flex items-center gap-2 font-outfit uppercase tracking-widest text-xs shrink-0">
+                <i data-lucide="arrow-left" class="w-5 h-5 transform group-hover:-translate-x-1 transition"></i>
+            </button>
+            <h2 id="modal-title">Název Galerie</h2>
+            <button id="modal-close"
+                class="text-white/50 hover:text-white transition group flex items-center gap-2 font-outfit uppercase tracking-widest text-xs shrink-0">
+                <span class="opacity-0 group-hover:opacity-100 transition duration-300 hidden sm:block">Zavřít</span>
+                <i data-lucide="x" class="w-7 h-7"></i>
+            </button>
+        </div>
+
+        <!-- Ochranný NSFW blok uvnitř modalu -->
+        <div id="modal-nsfw" class="modal-nsfw-overlay hidden">
+            <div class="relative mb-6">
+                <div class="absolute inset-0 bg-red-500/20 blur-3xl rounded-full"></div>
+                <i data-lucide="eye-off"
+                    class="w-16 h-16 text-red-500/90 mx-auto relative z-10 drop-shadow-[0_0_15px_rgba(239,68,68,0.5)]"></i>
+            </div>
+            <h3 class="font-cinzel text-white mb-4 tracking-widest uppercase">Galerie Aktů (18+)</h3>
+            <p class="text-white/60 font-outfit text-center max-w-md mb-8 leading-relaxed">Tato fotogalerie
+                ukrývá estetické fotografie a jemné odhalení krásy. Pokračujte, pouze pokud jste oslavili 18.
+                narozeniny.</p>
+            <button id="modal-reveal"
+                class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white font-outfit font-bold text-sm uppercase tracking-[3px] hover:bg-white hover:text-black transition-all duration-300 rounded-sm">
+                Vstoupit k dílům
+            </button>
+            <button onclick="document.getElementById('modal-close').click()"
+                class="nsfw-leave-btn mt-6 text-white/30 hover:text-white/60 text-sm font-outfit uppercase tracking-widest transition">Odejít
+                zpět</button>
+        </div>
+
+        <div id="modal-gallery-grid"
+            class="grid gap-6 w-full relative z-10 hidden"></div>
+        <div id="modal-photo-grid" class="masonry-grid relative z-10 hidden"></div>
+    </div>
+
+    <!-- FULLSCREEN LIGHTBOX PRO FOTKY -->
+    <div id="fullscreen-lightbox"
+        class="fixed inset-0 z-[10000] bg-black/95 backdrop-blur-xl opacity-0 pointer-events-none transition-opacity duration-500 flex items-center justify-center">
+        <!-- Zavírací tlačítko -->
+        <button onclick="closeLightbox()"
+            class="absolute top-4 right-4 md:top-8 md:right-8 text-white/50 hover:text-white transition group flex items-center gap-3 font-outfit uppercase tracking-widest text-sm z-50">
+            <span
+                class="opacity-0 group-hover:opacity-100 transition duration-300 transform translate-x-4 group-hover:translate-x-0 hidden md:block">Zavřít</span>
+            <i data-lucide="x" class="w-9 h-9 drop-shadow-lg"></i>
+        </button>
+
+        <!-- Kliknutí vedle => zavření -->
+        <div class="absolute inset-0 z-0 cursor-pointer" onclick="closeLightbox()"></div>
+
+        <!-- Středové plátno (Fotka a Šipky) -->
+        <div class="relative w-full h-full flex items-center justify-center p-4 md:p-12 z-10 pointer-events-none">
+            <!-- Samotný snímek -->
+            <img id="lightbox-img" src="" alt="Velký náhled"
+                class="object-contain drop-shadow-[0_0_50px_rgba(0,0,0,0.8)] rounded-sm pointer-events-auto transition-opacity duration-300" />
+
+            <!-- Předchozí -->
+            <button onclick="prevPhoto(event)"
+                class="absolute left-0 md:left-8 top-1/2 -translate-y-1/2 text-white/40 hover:text-white hover:scale-110 transition p-3 md:p-4 z-50 pointer-events-auto">
+                <i data-lucide="chevron-left" class="w-8 h-8 md:w-14 md:h-14 drop-shadow-xl"></i>
+            </button>
+
+            <!-- Další -->
+            <button onclick="nextPhoto(event)"
+                class="absolute right-0 md:right-8 top-1/2 -translate-y-1/2 text-white/40 hover:text-white hover:scale-110 transition p-3 md:p-4 z-50 pointer-events-auto">
+                <i data-lucide="chevron-right" class="w-8 h-8 md:w-14 md:h-14 drop-shadow-xl"></i>
+            </button>
+
+            <!-- Číselník -->
+            <div id="lightbox-counter"
+                class="absolute bottom-4 md:bottom-10 text-white/40 font-outfit text-xs md:text-sm tracking-[3px] pointer-events-auto">
+                1 / 10</div>
+        </div>
+    </div>
+
+    <!-- PATIČKA -->
+    <footer>
+        <p class="font-outfit text-white/20 text-xs tracking-[4px] uppercase hover:text-white/40 transition-colors duration-700 cursor-default">
+            &copy; <span id="year">2026</span> AI Fotografie &nbsp;|&nbsp; <a href="admin.html" class="text-white/20 hover:text-white transition">Admin</a>
+        </p>
+    </footer>
+
+    <!-- Přepínač jazyků -->
+    <div id="lang-switcher">
+        <button id="lang-cs" onclick="setLang('cs')" title="Čeština" class="lang-active">
+            <span>🇨🇿</span>
+        </button>
+        <button id="lang-en" onclick="setLang('en')" title="English">
+            <span>🇬🇧</span>
+        </button>
+    </div>
+
+
+    <script src="app.js?v=4"></script>
+    <script> lucide.createIcons(); </script>
+</body>
+
+</html>
