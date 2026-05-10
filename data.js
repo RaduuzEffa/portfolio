@@ -432,6 +432,41 @@ window.LOCAL_DB = {
       "titleEn": "",
       "galleryId": "gal_1778316981648",
       "url": "uploads/photos/1778317109789_hof_barcelona_01.webp"
+    },
+    {
+      "id": "photo_1778393220715",
+      "title": "Pupa01",
+      "titleEn": "",
+      "galleryId": "gal_1778315192274",
+      "url": "uploads/photos/1778393220730_andulka_kouzlici.webp"
+    },
+    {
+      "id": "photo_1778393243788",
+      "title": "Pupa02",
+      "titleEn": "",
+      "galleryId": "gal_1778315192274",
+      "url": "uploads/photos/1778393243797_andulka_sladka2.webp"
+    },
+    {
+      "id": "photo_1778393256828",
+      "title": "Pupa03",
+      "titleEn": "",
+      "galleryId": "gal_1778315192274",
+      "url": "uploads/photos/1778393256832_andulka_svudna.webp"
+    },
+    {
+      "id": "photo_1778393271812",
+      "title": "Pupa04",
+      "titleEn": "",
+      "galleryId": "gal_1778315192274",
+      "url": "uploads/photos/1778393271819_andulka_vamp1.webp"
+    },
+    {
+      "id": "photo_1778393285903",
+      "title": "Pupa05",
+      "titleEn": "",
+      "galleryId": "gal_1778315192274",
+      "url": "uploads/photos/1778393285913_andulka_zaneprazdnena.webp"
     }
   ]
 };
